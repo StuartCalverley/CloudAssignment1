@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       #map {
+        height: 700px;
+        width: 100%;
+        border-style: solid;
+       }
+    </style>
+    <!-- jQuery library -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+     <script type="text/javascript">
+     //Initializes the map options-->
+      function initialize() {
+          var latlng = new google.maps.LatLng(42, -2);
+          var myOptions = {
+              zoom: 3,
+              center: latlng,
+          };
+          var map = new google.maps.Map(document.getElementById("map"),
+      myOptions);
+      }
+      var myKey = "AIzaSyC7-_GsvB9U5OC1891LqKmF2PqRbyU4JBA";
+      //Loads the map on the page loading
+      function loadScript() {
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = "https://maps.googleapis.com/maps/api/js?key=" + myKey + "&sensor=false&callback=initialize";
+          document.body.appendChild(script);
+      }
+    </script>
+	<script language="JavaScript" type="text/javascript" src="javascripts/application.js"></script>
+  <script language="JavaScript" type="text/javascript" src="javascripts/authenticationCheck.js"></script>
+  </head>
+
+  <!--Runs the script when the page loads-->
+  <body onload="loadScript()">
+  <div class="container-fluid">
+    <div class="row" id="topBar " style="background-color:#9a9c9e; position: relative;">
+      <div class="col-sm-4">
+      <h2><span id="user-name"></span></h2>
+      </div>
+      <button type="button" id="logout" class="btn btn-danger btn-lg pull-right">Logout</button>
+    </div>
+    <div class="row" style="background-color:#bbbcbf">
+
+    <!--This is the section of code which will allow a user to enter an address-->
+    <h3>Address: </h3><input type="text" = name="address" id="address" value="2 Taylorwood Road"><br><br>
+
+    <button type="button" id="getLanLat" class="btn btn-primary btn-lg">Submit</button>
+    <button type="button" id="saveLocation" class="btn btn-success btn-lg">Save Location</button>
+    <button type="button" id="getLocations" class="btn btn-warning btn-lg">Load Locations</button>
+    </div>
+    </div>
+
+    <!--This is the section where the map will be loaded-->
+    <div id="map"></div>
+
+    <!--This section is the table that appears under the map and will display the weather forcast of a week-->
+    <div class="container-fluid">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th id="day1"></th>
+            <th id="day2"></th>
+            <th id="day3"></th>
+            <th id="day4"></th>
+            <th id="day5"></th>
+            <th id="day6"></th>
+            <th id="day7"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="weather1">
+              <p id="condition1" class="text-left"></p>
+              <p id="high1" class="text-left"></p>
+              <p id="low1" class="text-left"></p>
+            </td>
+            <td id="weather2">
+              <p id="condition2" class="text-left"></p>
+              <p id="high2" class="text-left"></p>
+              <p id="low2" class="text-left"></p>
+            </td>
+            <td id="weather3">
+              <p id="condition3" class="text-left"></p>
+              <p id="high3" class="text-left"></p>
+              <p id="low3" class="text-left"></p>
+            </td>
+            <td id="weather4">
+              <p id="condition4" class="text-left"></p>
+              <p id="high4" class="text-left"></p>
+              <p id="low4" class="text-left"></p>
+            </td>
+            <td id="weather5">
+              <p id="condition5" class="text-left"></p>
+              <p id="high5" class="text-left"></p>
+              <p id="low5" class="text-left"></p>
+            </td>
+            <td id="weather6">
+              <p id="condition6" class="text-left"></p>
+              <p id="high6" class="text-left"></p>
+              <p id="low6" class="text-left"></p>
+            </td>
+            <td id="weather7">
+              <p id="condition7" class="text-left"></p>
+              <p id="high7" class="text-left"></p>
+              <p id="low7" class="text-left"></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+    
+    <!--Displays the username of the user on the page-->
+  <script type='text/javascript'>
+    document.getElementById('user-name').innerHTML = sessionStorage.getItem("userName");
+  </script>
+
+    
+  </body>
+</html>
